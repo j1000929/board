@@ -28,7 +28,7 @@
 					<c:forEach items="${list }" var="boardVO">
 						<tr>
 							<td>${boardVO.bno }</td>
-							<td><a href=''>${boardVO.title }</a></td>
+							<td><a href='/board/read?bno=${boardVO.bno }'>${boardVO.title }</a></td>
 							<td>${boardVO.writer }</td>
 							<td><!-- fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${boardVO.regdate }"/-->${boardVO.regdate }</td>
 							<td><span class="badge bg-red">${boardVO.viewcnt }</span></td>

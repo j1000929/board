@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.study.domain.BoardVO;
 import org.study.service.BoardService;
@@ -45,5 +46,19 @@ public class BoardController {
 	public void listAll(Model model) throws Exception{
 		logger.info("show all list.............");
 		model.addAttribute("list", service.listAll());
+	}
+	
+	@RequestMapping(value="/read", method = RequestMethod.GET)
+	public void read(@RequestParam("bno") int bno, Model model) throws Exception{
+		model.addAttribute(service.read(bno));
+	}
+	
+	@RequestMapping(value="/remove", method=RequestMethod.POST)
+	public String remove(@RequestParam("bno") int bno, RedirectAttributes rttr) throws Exception{
+		
+		service.remove(bno);
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		return "redirect:/board/listAll";
+		
 	}
 }
