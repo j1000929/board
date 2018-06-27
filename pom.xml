@@ -194,5 +194,11 @@
                 </configuration>
             </plugin>
         </plugins>
+        
+        <testResources>
+	        <testResource>
+	            <directory>resources/persistence/mybatis.xml</directory>
+	        </testResource>
+  		 </testResources>
     </build>
 </project>
